@@ -4,7 +4,7 @@
 
 | Nome                         | RM     |
 | ---------------------------- | ------ |
-| Matheus de Lara Silva        | 57293 |
+| Matheus de Lara Silva        | 572935 |
 | Gustavo Naville Tobara       | 570674 |
 | Guilherme Marques dos Santos | 573112 |
 | Guilherme Wadt de Oliveira   | 569375 |
