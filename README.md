@@ -191,7 +191,7 @@ A Prova de Conceito demonstrou que é possível:
 
 # 🎥 Vídeo Demonstrativo
 
-Inserir link do vídeo no YouTube (não listado).
+Link do vídeo no YouTube
 
 ---
 
