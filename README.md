@@ -177,12 +177,6 @@ A arquitetura foi concebida para futura integração com sistemas fotovoltaicos 
 
 ---
 
-# 🎥 Vídeo Demonstrativo
-
-Link do vídeo no YouTube
-
----
-
 # 📷 Evidências
 
 <img width="1844" height="901" alt="Captura de tela 2026-06-15 165139" src="https://github.com/user-attachments/assets/b23ff526-9bd8-403f-99a4-1809585e3dd1" />
