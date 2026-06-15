@@ -197,4 +197,5 @@ Inserir link do vídeo no YouTube (não listado).
 
 # 📷 Evidências
 
-Inserir capturas de tela do dashboard desenvolvido e dos cenários simulados demonstrados durante a apresentação.
+<img width="1844" height="901" alt="Captura de tela 2026-06-15 165139" src="https://github.com/user-attachments/assets/b23ff526-9bd8-403f-99a4-1809585e3dd1" />
+<img width="1850" height="902" alt="Captura de tela 2026-06-15 165326" src="https://github.com/user-attachments/assets/1e03666d-525c-47c1-9726-e820b2753c84" />
