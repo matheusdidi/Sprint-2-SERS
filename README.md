@@ -12,147 +12,189 @@
 
 ---
 
-# Visão Geral
+# 📋 Visão Geral
 
-O ChargeGrid Intelligence é uma plataforma voltada ao gerenciamento inteligente da infraestrutura de recarga de veículos elétricos em ambientes comerciais.
+O ChargeGrid Intelligence é uma solução desenvolvida para o EV Challenge 2026 com o objetivo de otimizar a gestão energética de eletropostos comerciais.
 
-A solução foi desenvolvida no contexto do EV Challenge 2026 e tem como objetivo otimizar o uso da energia elétrica através do controle de demanda, permitindo uma operação mais eficiente e sustentável dos eletropostos.
+A proposta consiste em um sistema inteligente de controle de demanda capaz de monitorar o consumo energético de uma instalação e ajustar automaticamente a potência disponibilizada para o carregamento de veículos elétricos.
+
+Nesta Sprint 2 foi desenvolvida uma Prova de Conceito (PoC) funcional baseada em simulação, validando a lógica de gerenciamento energético da solução.
 
 ---
 
-# Problema
+# 🚨 Problema
 
-O crescimento da mobilidade elétrica aumenta a demanda por infraestrutura de carregamento.
+Com o crescimento da mobilidade elétrica, aumenta também a necessidade de infraestrutura de recarga eficiente e sustentável.
 
-Em muitos cenários comerciais, a ausência de mecanismos inteligentes de gerenciamento pode provocar:
+Em muitos estabelecimentos comerciais, os carregadores de veículos elétricos compartilham a mesma rede elétrica utilizada por outros equipamentos da instalação. Sem um mecanismo inteligente de gerenciamento, podem ocorrer:
 
-* Sobrecarga da rede elétrica;
-* Picos de consumo;
+* Sobrecarga da infraestrutura elétrica;
+* Picos de demanda;
 * Desperdício energético;
-* Aumento dos custos operacionais.
+* Aumento dos custos operacionais;
+* Necessidade de expansão da rede elétrica.
 
-Além disso, a integração entre carregadores, sistemas de monitoramento e gestão energética ainda é limitada.
-
----
-
-# Solução Proposta
-
-A Prova de Conceito desenvolvida consiste em um sistema de controle inteligente de demanda.
-
-O sistema monitora o consumo energético da instalação e ajusta automaticamente a potência destinada ao carregamento dos veículos elétricos.
-
-Dessa forma, a infraestrutura opera dentro de limites seguros e energeticamente eficientes.
+Além disso, muitos eletropostos ainda não possuem integração entre monitoramento energético, controle de potência e gestão operacional.
 
 ---
 
-# Arquitetura
+# 💡 Solução Proposta
+
+O trabalho utiliza um sistema de controle de demanda para distribuir a potência elétrica disponível de forma inteligente.
+
+A solução monitora:
+
+* Potência máxima da instalação;
+* Consumo atual do estabelecimento;
+* Potência solicitada pelo veículo elétrico.
+
+A partir desses dados, o sistema calcula automaticamente a potência disponível para carregamento.
+
+Quando a potência solicitada pelo veículo ultrapassa a capacidade disponível da instalação, o sistema reduz automaticamente a potência liberada ao carregador, evitando sobrecargas e garantindo uma operação mais eficiente.
+
+---
+
+# 🏗 Arquitetura da Solução
 
 ```text
-Dados Simulados
-       │
-       ▼
-Controle de Demanda
-       │
-       ▼
-Motor de Decisão
-       │
-       ▼
+Usuário
+   │
+   ▼
 Dashboard Streamlit
-       │
-       ▼
-Visualização dos Resultados
+   │
+   ▼
+Motor de Controle de Demanda
+   │
+   ├── Potência Máxima da Instalação
+   ├── Consumo Atual do Prédio
+   └── Potência Solicitada pelo Veículo
+   │
+   ▼
+Cálculo da Potência Disponível
+   │
+   ▼
+Decisão Automática
+   │
+   ▼
+Potência Liberada ao Carregador
 ```
 
 ---
 
-# Funcionamento
+# ⚙️ Funcionamento
 
-O sistema utiliza três variáveis principais:
+A lógica da Prova de Conceito é baseada na seguinte regra:
 
-* Potência máxima disponível;
-* Consumo atual da instalação;
-* Potência solicitada pelo veículo.
+```text
+Potência Disponível =
+Potência Máxima da Instalação
+−
+Consumo Atual do Prédio
+```
 
-### Regra de Controle
+Se:
 
-Potência disponível = Potência máxima − Consumo da instalação
+```text
+Potência Solicitada > Potência Disponível
+```
 
-Caso a potência solicitada seja superior à potência disponível, o sistema reduz automaticamente a potência de carregamento.
+então:
+
+```text
+Potência Liberada = Potência Disponível
+```
+
+Caso contrário:
+
+```text
+Potência Liberada = Potência Solicitada
+```
 
 ---
 
-# Exemplo
+# 📊 Exemplo de Simulação
 
-| Variável            | Valor |
-| ------------------- | ----- |
-| Potência Máxima     | 30 kW |
-| Consumo do Prédio   | 18 kW |
-| Potência Solicitada | 22 kW |
-| Potência Liberada   | 12 kW |
+| Variável                         | Valor |
+| -------------------------------- | ----- |
+| Potência Máxima                  | 30 kW |
+| Consumo do Prédio                | 18 kW |
+| Potência Solicitada pelo Veículo | 22 kW |
+| Potência Disponível              | 12 kW |
+| Potência Liberada                | 12 kW |
+
+Resultado:
+
+O sistema identifica a insuficiência de potência e reduz automaticamente o carregamento para evitar sobrecarga da instalação.
 
 ---
 
-# Tecnologias Utilizadas
+# 🖥️ Prova de Conceito Desenvolvida
 
-* Python
+A PoC foi implementada utilizando um dashboard interativo desenvolvido em Python.
+
+O sistema permite:
+
+* Simular diferentes cenários de consumo;
+* Alterar a potência máxima da instalação;
+* Alterar a potência solicitada pelo veículo;
+* Visualizar o acionamento do controle de demanda;
+* Visualizar os resultados em tempo real;
+* Exibir gráficos de distribuição de potência.
+
+---
+
+# 🛠 Tecnologias Utilizadas
+
+* Python 3.14
 * Streamlit
 * Pandas
+* Plotly
 * GitHub
 
 ---
 
-# Sustentabilidade e Energias Renováveis
+# 🌱 Sustentabilidade e Eficiência Energética
 
-A solução foi fundamentada nos conceitos estudados na disciplina de Soluções em Energias Renováveis e Sustentáveis.
+A solução foi desenvolvida com base nos conceitos estudados na disciplina de Soluções em Energias Renováveis e Sustentáveis.
 
 Os principais benefícios são:
 
-## Eficiência Energética
+### Eficiência Energética
 
-O sistema evita desperdícios e otimiza a utilização da infraestrutura elétrica.
+Utilização otimizada da infraestrutura elétrica existente, reduzindo desperdícios e aumentando a eficiência operacional.
 
-## Gestão Inteligente da Demanda
+### Gestão Inteligente da Demanda
 
-O controle automático reduz picos de consumo e melhora a estabilidade energética.
+Redução de picos de consumo e melhor distribuição da energia disponível.
 
-## Integração Futura com Fontes Renováveis
+### Mobilidade Sustentável
 
-A arquitetura foi concebida para futura integração com sistemas fotovoltaicos e carregadores inteligentes.
+Contribuição para a expansão segura e eficiente da infraestrutura de recarga de veículos elétricos.
 
-## Mobilidade Sustentável
+### Integração com Energias Renováveis
 
-Ao otimizar o carregamento de veículos elétricos, a solução contribui para uma matriz de transporte mais limpa e eficiente.
+A arquitetura foi concebida para futura integração com sistemas fotovoltaicos e soluções energéticas do ecossistema GoodWe.
 
 ---
 
-# Resultados da Prova de Conceito
+# 📈 Resultados Obtidos
 
-A PoC demonstrou que é possível:
+A Prova de Conceito demonstrou que é possível:
 
 * Monitorar variáveis energéticas;
 * Aplicar regras automáticas de controle;
-* Ajustar dinamicamente a potência de carregamento;
-* Melhorar a eficiência operacional da infraestrutura.
+* Ajustar dinamicamente a potência destinada à recarga;
+* Evitar sobrecargas da instalação;
+* Melhorar a utilização da infraestrutura elétrica disponível.
 
 ---
 
-# Trabalhos Futuros
+# 🎥 Vídeo Demonstrativo
 
-* Integração com carregadores GoodWe;
-* Comunicação via Modbus TCP;
-* Tarifação dinâmica;
-* Registro completo de sessões de carregamento;
-* Aplicação de Inteligência Artificial para previsão de demanda;
-* Integração futura com OCPP.
+Inserir link do vídeo no YouTube (não listado).
 
 ---
 
-# Vídeo Demonstrativo
+# 📷 Evidências
 
-Inserir link do vídeo.
-
----
-
-# Repositório
-
-Inserir link do GitHub.
+Inserir capturas de tela do dashboard desenvolvido e dos cenários simulados demonstrados durante a apresentação.
