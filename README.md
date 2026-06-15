@@ -177,18 +177,6 @@ A arquitetura foi concebida para futura integração com sistemas fotovoltaicos 
 
 ---
 
-# 📈 Resultados Obtidos
-
-A Prova de Conceito demonstrou que é possível:
-
-* Monitorar variáveis energéticas;
-* Aplicar regras automáticas de controle;
-* Ajustar dinamicamente a potência destinada à recarga;
-* Evitar sobrecargas da instalação;
-* Melhorar a utilização da infraestrutura elétrica disponível.
-
----
-
 # 🎥 Vídeo Demonstrativo
 
 Link do vídeo no YouTube
